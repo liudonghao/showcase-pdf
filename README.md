@@ -27,7 +27,7 @@ So, it's very hard to extract tables with right lines and texts, there are lots 
 
 # Example of Extract All Tables
 
-Example, [PDF](2. ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf), [XLSX](all.xlsx)
+Example, [PDF](ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf), [XLSX](all.xlsx)
 
 
 
@@ -47,7 +47,7 @@ In such a case of selective table extraction, the challenge is that, from a cont
 
 ![](glue-table.png)
 
-Here is the real case when I was serving a customer in Greece,  [PDF](36-2020 Ψ09ΦΩΞ1-ΠΦΞ έγκριση πρακτικού Ι_signed.pdf), [Excel](glue.xlsx) where you can see Offer tables that span page 3 and 4 are glued together in the Excel, not missed out, although it's ruled out by searching keywords with locations (you may have noticed it has no titles).
+Here is the real case when I was serving a customer in Greece,  [PDF](36-2020_Ψ09ΦΩΞ1-ΠΦΞ_έγκριση_πρακτικού_Ι_signed.pdf), [Excel](glue.xlsx) where you can see Offer tables that span page 3 and 4 are glued together in the Excel, not missed out, although it's ruled out by searching keywords with locations (you may have noticed it has no titles).
 
 ![](table-spanning.png)
 
@@ -69,19 +69,19 @@ If you take a close look at the above PDF, it also has another Offer table in pa
 
 # Cells Compensation
 
-The table of the last page of this [PDF](2. ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf) has open bottom, looks like this:
+The table of the last page of this [PDF](ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf) has open bottom, looks like this:
 
-![](open bottom.png)
+![](open_bottom.png)
 
 In the begining, my table extracting engine recognizes it as:
 
-![](open bottom recognized.png)
+![](open_bottom_recognized.png)
 
 Again, PDF is really in graphic format rather than text format, inside PDF format, there is no high level objects, like a table, no, not even a line.  But extracting tabular data is really based on extracting lines, then tables are recoginzed on top of extracted lines, so that's why my engine gives shuch a irregularly shaped table without cells compensation. 
 
 My extracting engine ends up with below in Excel after cells compensation, meaning filling up all bottom border opened cells in [Excel](all.xlsx) if any content there.
 
-![](after compensation.png)
+![](after_compensation.png)
 
 The whole process of compensating is extremely complicated, think about this:
 
@@ -89,4 +89,4 @@ The whole process of compensating is extremely complicated, think about this:
 
 #2, We cannot immediately compensate open cells without considering anything else, that would lead to make some text as part of a table that shouldn't happen. For this reason, we need to look at its neighbors, in this case it is the lie 275 as reference to compare if they have similar structure and content distribution as described in #1, actually most of cells of line 275 are empty, inside my extracting engine, line 274 and 275 are covered by merged cells actually.
 
-#3, Anyway it's just extremely sophisticated, you can try it yourself with some other tabular format data extracting tools with the same [PDF](2. ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf).
+#3, Anyway it's just extremely sophisticated, you can try it yourself with some other tabular format data extracting tools with the same [PDF](ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ_SIGNED.pdf).
